@@ -25,14 +25,45 @@ import com.mytest.util.LogUtil;
  * @since 2018/05/25
  */
 public class DemoInitializingBean implements InitializingBean {
+    /** message */
+    private String message;
+
     static {
         LogUtil.digestLog();
     }
+
+    /**
+     * init
+     */
     public void init() {
         LogUtil.digestLog();
     }
+
+    /**
+     * before init be called
+     *
+     * @throws Exception
+     */
     @Override
     public void afterPropertiesSet() throws Exception {
         LogUtil.digestLog();
+    }
+
+    /**
+     * Getter method for property <tt>message</tt>.
+     *
+     * @return property value of message
+     */
+    public String getMessage() {
+        return message;
+    }
+
+    /**
+     * Setter method for property <tt>message</tt>.
+     *
+     * @param message value to be assigned to property message
+     */
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

@@ -36,9 +36,14 @@ public class DemoBeanPostProcessorTest {
         //根据XML配置文件初始化Spring上下文
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
             "beanPostProcessor.xml");
-        DemoInitializingBean demoInitializingBean = applicationContext.getBean("demoInitializingBean",
-                DemoInitializingBean.class);
-        System.out.println("done");
-        Assert.assertNotNull("just for test demo", demoInitializingBean);
+        System.out.println("=======done=======");
+        DemoInitializingBean bean1 = applicationContext.getBean("demoInitializingBean",
+            DemoInitializingBean.class);
+        Assert.assertEquals("test1", "Hello World 1! TEST 1", bean1.getMessage());
+        DemoInitializingBean bean2 = applicationContext.getBean("demoInitializingBean2",
+            DemoInitializingBean.class);
+        Assert.assertEquals("test2", "Hello World 2! TEST 2", bean2.getMessage());
+        System.out.println(bean1.getMessage());
+        System.out.println(bean2.getMessage());
     }
 }
