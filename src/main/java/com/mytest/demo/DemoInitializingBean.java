@@ -25,6 +25,12 @@ import com.mytest.util.LogUtil;
  * @since 2018/05/25
  */
 public class DemoInitializingBean implements InitializingBean {
+    static {
+        LogUtil.digestLog();
+    }
+    public void init() {
+        LogUtil.digestLog();
+    }
     @Override
     public void afterPropertiesSet() throws Exception {
         LogUtil.digestLog();

@@ -18,6 +18,7 @@ package com.mytest.demo;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 
@@ -29,6 +30,7 @@ import com.mytest.util.LogUtil;
  */
 public class MixBeanProcessor implements InitializingBean, BeanFactoryPostProcessor {
 
+    @Autowired
     private DemoInitializingBean demoInitializingBean;
 
     static {

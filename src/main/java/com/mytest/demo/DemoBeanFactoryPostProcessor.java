@@ -27,6 +27,9 @@ import com.mytest.util.LogUtil;
  * @since 2018/05/25
  */
 public class DemoBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
+    static {
+        LogUtil.digestLog();
+    }
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         LogUtil.digestLog();

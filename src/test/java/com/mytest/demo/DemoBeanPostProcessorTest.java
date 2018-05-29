@@ -16,29 +16,29 @@
  */
 package com.mytest.demo;
 
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.config.BeanPostProcessor;
-
-import com.mytest.util.LogUtil;
+import org.junit.Assert;
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * @author liqingyu
- * @since 2018/05/25
+ * @since 2018/05/29
  */
-public class DecorateBeanPostProcessor implements BeanPostProcessor {
-    @Override
-    public Object postProcessBeforeInitialization(Object bean,
-                                                  String beanName) throws BeansException {
-        LogUtil.digestLog();
-        System.out.println("do before==>" + beanName);
-        return bean;
-    }
+public class DemoBeanPostProcessorTest {
 
-    @Override
-    public Object postProcessAfterInitialization(Object bean,
-                                                 String beanName) throws BeansException {
-        LogUtil.digestLog();
-        System.out.println("do after==>" + beanName);
-        return bean;
+    /**
+     * 注意，对每个配置了InitializingBean或者init-method的bean都会做修饰
+     */
+    @Test
+    public void test() {
+
+        //根据XML配置文件初始化Spring上下文
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
+            "beanPostProcessor.xml");
+        DemoInitializingBean demoInitializingBean = applicationContext.getBean("demoInitializingBean",
+                DemoInitializingBean.class);
+        System.out.println("完成");
+        Assert.assertNotNull("just for test demo", demoInitializingBean);
     }
 }

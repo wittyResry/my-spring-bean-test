@@ -2,11 +2,8 @@ package com.mytest.demo;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import static org.junit.Assert.*;
 
 /**
  * @author liqingyu
@@ -21,6 +18,7 @@ public class DemoTest {
             "beanTestContext.xml");
         MixBeanProcessor mixBeanProcessor = applicationContext.getBean("mixBeanProcessor",
             MixBeanProcessor.class);
+        System.out.println("Íê³É");
         Assert.assertNotNull("just for test demo", mixBeanProcessor);
     }
 }
