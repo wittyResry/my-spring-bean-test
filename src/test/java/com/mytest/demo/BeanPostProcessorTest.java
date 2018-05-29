@@ -25,7 +25,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @author liqingyu
  * @since 2018/05/29
  */
-public class DemoBeanPostProcessorTest {
+public class BeanPostProcessorTest {
 
     /**
      * 注意，对每个配置了InitializingBean或者init-method的bean都会做修饰
@@ -35,7 +35,7 @@ public class DemoBeanPostProcessorTest {
 
         //根据XML配置文件初始化Spring上下文
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
-            "beanPostProcessor.xml");
+            "bean-post-processor.xml");
         System.out.println("=======done=======");
         DemoInitializingBean bean1 = applicationContext.getBean("demoInitializingBean",
             DemoInitializingBean.class);

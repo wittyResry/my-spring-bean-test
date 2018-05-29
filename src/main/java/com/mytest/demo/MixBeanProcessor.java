@@ -17,6 +17,7 @@
 package com.mytest.demo;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
@@ -27,7 +28,7 @@ import com.mytest.util.LogUtil;
  * @author liqingyu
  * @since 2018/05/25
  */
-public class MixBeanProcessor implements InitializingBean, BeanFactoryPostProcessor {
+public class MixBeanProcessor implements InitializingBean, BeanFactoryPostProcessor,DisposableBean {
 
     /** demoInitializingBean */
     private DemoInitializingBean demoInitializingBean;
@@ -47,6 +48,14 @@ public class MixBeanProcessor implements InitializingBean, BeanFactoryPostProces
      * init-method
      */
     public void init() {
+        LogUtil.digestLog();
+    }
+
+    /**
+     * destroy
+     */
+    @Override
+    public void destroy() {
         LogUtil.digestLog();
     }
 
