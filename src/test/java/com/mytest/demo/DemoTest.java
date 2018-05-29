@@ -18,7 +18,7 @@ public class DemoTest {
             "beanTestContext.xml");
         MixBeanProcessor mixBeanProcessor = applicationContext.getBean("mixBeanProcessor",
             MixBeanProcessor.class);
-        System.out.println("Íê³É");
+        System.out.println("done");
         Assert.assertNotNull("just for test demo", mixBeanProcessor);
     }
 }

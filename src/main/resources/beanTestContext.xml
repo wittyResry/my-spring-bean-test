@@ -6,6 +6,10 @@
 
     <bean id="demoBeanFactoryPostProcessor" class="com.mytest.demo.DemoBeanFactoryPostProcessor"/>
     <bean id="demoInitializingBean" class="com.mytest.demo.DemoInitializingBean" init-method="init"/>
-    <bean id="mixBeanProcessor" class="com.mytest.demo.MixBeanProcessor" init-method="init"/>
+    <bean id="mixBeanProcessor" class="com.mytest.demo.MixBeanProcessor" init-method="init">
+        <property name="demoInitializingBean">
+            <ref bean="demoInitializingBean" />
+        </property>
+    </bean>
     <bean id="decorateBeanPostProcessor" class="com.mytest.demo.DecorateBeanPostProcessor"/>
 </beans>

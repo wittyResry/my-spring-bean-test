@@ -38,7 +38,7 @@ public class DemoBeanPostProcessorTest {
             "beanPostProcessor.xml");
         DemoInitializingBean demoInitializingBean = applicationContext.getBean("demoInitializingBean",
                 DemoInitializingBean.class);
-        System.out.println("Íê³É");
+        System.out.println("done");
         Assert.assertNotNull("just for test demo", demoInitializingBean);
     }
 }

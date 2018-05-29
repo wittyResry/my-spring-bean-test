@@ -37,7 +37,7 @@ public class LogUtil {
             System.out.println("skip digest method name");
             return;
         }
-        System.out.println(String.format("%s.%s,Ö´ÐÐ,date:%s",
+        System.out.println(String.format("%s.%s,processing,date:%s",
             Thread.currentThread().getStackTrace()[INDEX].getClassName(),
             Thread.currentThread().getStackTrace()[INDEX].getMethodName(),
             DateUtil.getNewFormatDateString(new Date(System.currentTimeMillis()))));
