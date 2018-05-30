@@ -1,4 +1,4 @@
-package com.mytest.demo;
+package com.mytest.bean;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -22,6 +22,6 @@ public class BeanLifeCycleTest {
         System.out.println("=======done=======");
         MixBeanProcessor mixBeanProcessor = applicationContext.getBean("mixBeanProcessor",
             MixBeanProcessor.class);
-        Assert.assertNotNull("just for test demo", mixBeanProcessor);
+        Assert.assertNotNull("just for test bean", mixBeanProcessor);
     }
 }

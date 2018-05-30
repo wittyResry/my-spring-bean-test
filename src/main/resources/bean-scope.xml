@@ -5,13 +5,13 @@
            http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <bean id="singletonProcessor1" class="com.mytest.demo.SingletonProcessor">
+    <bean id="singletonProcessor1" class="com.mytest.bean.SingletonProcessor">
         <property name="message" value="TEST 1"/>
     </bean>
-    <bean id="singletonProcessor2" class="com.mytest.demo.SingletonProcessor">
+    <bean id="singletonProcessor2" class="com.mytest.bean.SingletonProcessor">
         <property name="message" value="TEST 3"/>
     </bean>
-    <bean id="prototypeProcessor" class="com.mytest.demo.PrototypeProcessor" scope="prototype">
+    <bean id="prototypeProcessor" class="com.mytest.bean.PrototypeProcessor" scope="prototype">
         <property name="message" value="TEST 4"/>
     </bean>
 </beans>

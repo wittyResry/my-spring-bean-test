@@ -29,6 +29,16 @@ public class LogUtil {
     public static final int INDEX = 2;
 
     /**
+     * 打印下标
+     * 
+     * @param format
+     * @param args
+     */
+    public static void digest(String format, Object... args) {
+        System.out.println(String.format(format, args));
+    }
+
+    /**
      * 打印调用日志
      */
     public static void digestLog() {

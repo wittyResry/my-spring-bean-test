@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mytest.demo;
+package com.mytest.bean;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -52,5 +52,12 @@ public class BeanScopeTest {
         Assert.assertNotSame("prototype", "TEST 4", prototypeProcessor1.getMessage());
         Assert.assertNotSame("prototype", "TEST 4", prototypeProcessor2.getMessage());
         System.out.println("=======done=======");
+    }
+
+    @Test
+    public void main() {
+        int a = (int) (Math.random()*10);
+        int t = a >5 && a < 11 ? 1: 0;
+        System.out.println(t);
     }
 }

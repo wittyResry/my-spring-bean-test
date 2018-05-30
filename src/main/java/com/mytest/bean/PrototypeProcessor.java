@@ -14,13 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mytest.demo;
+package com.mytest.bean;
 
 /**
  * @author liqingyu
  * @since 2018/05/29
  */
-public class SingletonProcessor {
+public class PrototypeProcessor {
     /** message */
     private String message;
 

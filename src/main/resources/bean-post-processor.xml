@@ -5,11 +5,11 @@
            http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <bean id="demoInitializingBean" class="com.mytest.demo.DemoInitializingBean" init-method="init">
+    <bean id="demoInitializingBean" class="com.mytest.bean.DemoInitializingBean" init-method="init">
         <property name="message" value="Hello World 1!"/>
     </bean>
-    <bean id="demoInitializingBean2" class="com.mytest.demo.DemoInitializingBean" init-method="init">
+    <bean id="demoInitializingBean2" class="com.mytest.bean.DemoInitializingBean" init-method="init">
         <property name="message" value="Hello World 2!"/>
     </bean>
-    <bean id="decorateBeanPostProcessor" class="com.mytest.demo.DecorateBeanPostProcessor"/>
+    <bean id="decorateBeanPostProcessor" class="com.mytest.bean.DecorateBeanPostProcessor"/>
 </beans>

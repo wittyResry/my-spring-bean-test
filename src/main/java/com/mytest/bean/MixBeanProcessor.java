@@ -14,9 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mytest.demo;
+package com.mytest.bean;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 
@@ -26,9 +28,48 @@ import com.mytest.util.LogUtil;
  * @author liqingyu
  * @since 2018/05/25
  */
-public class DemoBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
+public class MixBeanProcessor implements InitializingBean, BeanFactoryPostProcessor,DisposableBean {
+
+    /** demoInitializingBean */
+    private DemoInitializingBean demoInitializingBean;
 
     static {
+        LogUtil.digestLog();
+    }
+
+    /**
+     * constructor
+     */
+    public MixBeanProcessor() {
+        LogUtil.digestLog();
+    }
+
+    /**
+     * init-method
+     */
+    public void init() {
+        LogUtil.digestLog();
+    }
+
+    /**
+     * destroy
+     */
+    @Override
+    public void destroy() {
+        LogUtil.digestLog();
+    }
+
+    /**
+     * Invoked by a BeanFactory after it has set all bean properties supplied
+     * (and satisfied BeanFactoryAware and ApplicationContextAware).
+     * <p>This method allows the bean instance to perform initialization only
+     * possible when all bean properties have been set and to throw an
+     * exception in the event of misconfiguration.
+     * @throws Exception in the event of misconfiguration (such
+     * as failure to set an essential property) or if initialization fails.
+     */
+    @Override
+    public void afterPropertiesSet() throws Exception {
         LogUtil.digestLog();
     }
 
@@ -43,5 +84,15 @@ public class DemoBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         LogUtil.digestLog();
+    }
+
+    /**
+     * Setter method for property <tt>demoInitializingBean</tt>.
+     *
+     * @param demoInitializingBean value to be assigned to property demoInitializingBean
+     */
+    public void setDemoInitializingBean(DemoInitializingBean demoInitializingBean) {
+        LogUtil.digestLog();
+        this.demoInitializingBean = demoInitializingBean;
     }
 }

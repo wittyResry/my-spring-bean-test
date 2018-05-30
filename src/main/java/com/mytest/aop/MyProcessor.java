@@ -14,15 +14,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mytest.demo;
+package com.mytest.aop;
+
+import com.mytest.util.LogUtil;
 
 /**
  * @author liqingyu
- * @since 2018/05/29
+ * @since 2018/05/31
  */
-public class PrototypeProcessor {
+public class MyProcessor {
+
     /** message */
     private String message;
+
+    /**
+     * 返回当前生成的MyProcessor对象
+     *
+     * @param message
+     * @return
+     */
+    public Object processor(String message) {
+        System.out.println(this.getMessage() + " " + message);
+        return this;
+    }
 
     /**
      * Getter method for property <tt>message</tt>.
@@ -39,6 +53,7 @@ public class PrototypeProcessor {
      * @param message value to be assigned to property message
      */
     public void setMessage(String message) {
+        LogUtil.digestLog();
         this.message = message;
     }
 }
