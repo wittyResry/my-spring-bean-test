@@ -16,35 +16,19 @@
  */
 package com.mytest.aop;
 
-import org.aspectj.lang.ProceedingJoinPoint;
-
-import com.mytest.util.LogUtil;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
  * @author liqingyu
- * @since 2018/05/30
+ * @since 2018/06/01
  */
-public class BeanProcessAspect {
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ ElementType.METHOD })
+public @interface CheckAnnotated {
 
-    /**
-     * Around advice.
-     *
-     * @param jp the jp
-     * @return the object
-     */
-    public Object aroundAdvice(ProceedingJoinPoint jp) {
-        Object retVal;
-        try {
-            LogUtil.digestLog();
-            LogUtil.digest("log Begining method: %s.%s", jp.getTarget().getClass().getName(),
-                jp.getSignature().getName());
-            if (jp.getTarget() instanceof MyProcessor) {
-                ((MyProcessor) jp.getTarget()).setExtMassage("TEST 2");
-            }
-            retVal = jp.proceed(jp.getArgs());
-        } catch (Throwable throwable) {
-            retVal = null;
-        }
-        return retVal;
-    }
+    /** 是否需要检查 */
+    boolean needCheck() default false;
 }

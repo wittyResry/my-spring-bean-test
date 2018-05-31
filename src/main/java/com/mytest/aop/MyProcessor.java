@@ -27,14 +27,19 @@ public class MyProcessor {
     /** message */
     private String message;
 
+    /** extMessage */
+    private String extMassage;
+
     /**
      * 返回当前生成的MyProcessor对象
      *
      * @param message
      * @return
      */
+    @CheckAnnotated(needCheck = true)
     public Object processor(String message) {
-        System.out.println(this.getMessage() + " " + message);
+        System.out
+            .println(String.format("%s %s %s", this.getMessage(), this.getExtMassage(), message));
         return this;
     }
 
@@ -55,5 +60,23 @@ public class MyProcessor {
     public void setMessage(String message) {
         LogUtil.digestLog();
         this.message = message;
+    }
+
+    /**
+     * Getter method for property <tt>extMassage</tt>.
+     *
+     * @return property value of extMassage
+     */
+    public String getExtMassage() {
+        return extMassage;
+    }
+
+    /**
+     * Setter method for property <tt>extMassage</tt>.
+     *
+     * @param extMassage value to be assigned to property extMassage
+     */
+    public void setExtMassage(String extMassage) {
+        this.extMassage = extMassage;
     }
 }

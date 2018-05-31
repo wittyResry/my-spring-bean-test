@@ -16,35 +16,21 @@
  */
 package com.mytest.aop;
 
-import org.aspectj.lang.ProceedingJoinPoint;
-
-import com.mytest.util.LogUtil;
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * @author liqingyu
- * @since 2018/05/30
+ * @since 2018/06/01
  */
-public class BeanProcessAspect {
-
-    /**
-     * Around advice.
-     *
-     * @param jp the jp
-     * @return the object
-     */
-    public Object aroundAdvice(ProceedingJoinPoint jp) {
-        Object retVal;
-        try {
-            LogUtil.digestLog();
-            LogUtil.digest("log Begining method: %s.%s", jp.getTarget().getClass().getName(),
-                jp.getSignature().getName());
-            if (jp.getTarget() instanceof MyProcessor) {
-                ((MyProcessor) jp.getTarget()).setExtMassage("TEST 2");
-            }
-            retVal = jp.proceed(jp.getArgs());
-        } catch (Throwable throwable) {
-            retVal = null;
-        }
-        return retVal;
+public class BeanProcessInterceptorTest {
+    @Test
+    public void test() {
+        //根据XML配置文件初始化Spring上下文
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
+                "aop-interceptor-processor.xml");
+        MyProcessor myProcessor = applicationContext.getBean("myProcessor", MyProcessor.class);
+        myProcessor.processor("hello world!");
     }
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="serviceMonitorAutoProxyCreator"
+          class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+
+        <property name="interceptorNames">
+            <list>
+                <value>beanInterceptor</value>
+            </list>
+        </property>
+        <property name="beanNames">
+            <list>
+                <value>myProcessor</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="beanInterceptor" class="com.mytest.aop.BeanInterceptor"/>
+    <bean id="myProcessor" class="com.mytest.aop.MyProcessor">
+        <property name="message" value="TEST 1"/>
+    </bean>
+</beans>
