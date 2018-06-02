@@ -14,9 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mytest.aop;
+package com.mytest.bean;
 
-import com.mytest.util.LogUtil;
+import com.mytest.aop.annotation.CheckAnnotated;
+import com.mytest.model.UserInfo;
+import com.mytest.common.utils.LogUtil;
 
 /**
  * @author liqingyu
@@ -33,13 +35,13 @@ public class MyProcessor {
     /**
      * 返回当前生成的MyProcessor对象
      *
-     * @param message
+     * @param userInfo
      * @return
      */
     @CheckAnnotated(needCheck = true)
-    public Object processor(String message) {
+    public Object processor(UserInfo userInfo) {
         System.out
-            .println(String.format("%s %s %s", this.getMessage(), this.getExtMassage(), message));
+            .println(String.format("%s %s %s", this.getMessage(), this.getExtMassage(), userInfo));
         return this;
     }
 

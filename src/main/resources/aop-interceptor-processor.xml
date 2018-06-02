@@ -18,7 +18,7 @@
         </property>
     </bean>
     <bean id="beanInterceptor" class="com.mytest.aop.BeanInterceptor"/>
-    <bean id="myProcessor" class="com.mytest.aop.MyProcessor">
+    <bean id="myProcessor" class="com.mytest.bean.MyProcessor">
         <property name="message" value="TEST 1"/>
     </bean>
 </beans>

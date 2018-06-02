@@ -14,30 +14,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mytest.aop;
+package com.mytest.aop.annotation;
 
-import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import com.mytest.bean.MyProcessor;
-import com.mytest.model.UserInfo;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
  * @author liqingyu
  * @since 2018/06/01
  */
-public class BeanProcessInterceptorTest {
-    @Test
-    public void test() {
-        //根据XML配置文件初始化Spring上下文
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
-                "aop-interceptor-processor.xml");
-        MyProcessor myProcessor = applicationContext.getBean("myProcessor", MyProcessor.class);
-        UserInfo userInfo = new UserInfo();
-        userInfo.setUserId("1");
-        userInfo.setEmail("liqingyu@mytest.com");
-        userInfo.setMobile("13812345678");
-        myProcessor.processor(userInfo);
-    }
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ ElementType.METHOD })
+public @interface CheckAnnotated {
+
+    /** 是否需要检查 */
+    boolean needCheck() default false;
 }

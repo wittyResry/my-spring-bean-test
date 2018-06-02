@@ -14,42 +14,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mytest.util;
+package com.mytest.common.annotation;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+
+import com.mytest.common.enums.SensitiveTypeEnum;
+
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
  * @author liqingyu
- * @since 2018/05/25
+ * @since 2018/06/01
  */
-public class DateUtil {
-    private final static String newFormat = "yyyy-MM-dd HH:mm:ss";
+@Retention(RUNTIME)
+@Target({ FIELD })
+public @interface SensitiveField {
 
-    /**
-     * 格式化日期
-     *
-     * @param date
-     * @return
-     */
-    public static String getNewFormatDateString(Date date) {
-        DateFormat dateFormat = new SimpleDateFormat(newFormat);
-        return getDateString(date, dateFormat);
-    }
-
-    /**
-     * 格式化日期
-     *
-     * @param date
-     * @param dateFormat
-     * @return
-     */
-    public static String getDateString(Date date, DateFormat dateFormat) {
-        if (date == null || dateFormat == null) {
-            return null;
-        }
-
-        return dateFormat.format(date);
-    }
+    SensitiveTypeEnum hiddenType() default SensitiveTypeEnum.NONE;
 }

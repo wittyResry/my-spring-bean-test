@@ -14,21 +14,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mytest.aop;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+package com.mytest.common.enums;
 
 /**
  * @author liqingyu
  * @since 2018/06/01
  */
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.METHOD })
-public @interface CheckAnnotated {
+public enum SensitiveTypeEnum {
 
-    /** 是否需要检查 */
-    boolean needCheck() default false;
+    /** 手机号类型 */
+    MOBILE("MOBILE", "手机号类型"),
+
+    /** email类型 */
+    EMAIL("EMAIL", "email类型"),
+
+    /** 非敏感信息 */
+    NONE("NONE", "全部不隐藏");
+
+    private final String code;
+
+    private final String desc;
+
+    SensitiveTypeEnum(String code, String desc) {
+        this.code = code;
+        this.desc = desc;
+    }
+
 }

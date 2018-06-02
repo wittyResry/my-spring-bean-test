@@ -18,7 +18,8 @@ package com.mytest.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 
-import com.mytest.util.LogUtil;
+import com.mytest.bean.MyProcessor;
+import com.mytest.common.utils.LogUtil;
 
 /**
  * @author liqingyu

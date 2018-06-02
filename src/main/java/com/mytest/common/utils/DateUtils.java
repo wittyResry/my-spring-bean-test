@@ -14,30 +14,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mytest.aop;
+package com.mytest.common.utils;
 
-import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import com.mytest.bean.MyProcessor;
-import com.mytest.model.UserInfo;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @author liqingyu
- * @since 2018/06/01
+ * @since 2018/05/25
  */
-public class BeanProcessInterceptorTest {
-    @Test
-    public void test() {
-        //根据XML配置文件初始化Spring上下文
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
-                "aop-interceptor-processor.xml");
-        MyProcessor myProcessor = applicationContext.getBean("myProcessor", MyProcessor.class);
-        UserInfo userInfo = new UserInfo();
-        userInfo.setUserId("1");
-        userInfo.setEmail("liqingyu@mytest.com");
-        userInfo.setMobile("13812345678");
-        myProcessor.processor(userInfo);
+public class DateUtils {
+    private final static String newFormat = "yyyy-MM-dd HH:mm:ss";
+
+    /**
+     * 格式化日期
+     *
+     * @param date
+     * @return
+     */
+    public static String getNewFormatDateString(Date date) {
+        DateFormat dateFormat = new SimpleDateFormat(newFormat);
+        return getDateString(date, dateFormat);
+    }
+
+    /**
+     * 格式化日期
+     *
+     * @param date
+     * @param dateFormat
+     * @return
+     */
+    public static String getDateString(Date date, DateFormat dateFormat) {
+        if (date == null || dateFormat == null) {
+            return null;
+        }
+
+        return dateFormat.format(date);
     }
 }

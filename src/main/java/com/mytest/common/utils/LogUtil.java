@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mytest.util;
+package com.mytest.common.utils;
 
 import java.util.Date;
 
@@ -50,7 +50,7 @@ public class LogUtil {
         System.out.println(String.format("%s.%s,processing,date:%s",
             Thread.currentThread().getStackTrace()[INDEX].getClassName(),
             Thread.currentThread().getStackTrace()[INDEX].getMethodName(),
-            DateUtil.getNewFormatDateString(new Date(System.currentTimeMillis()))));
+            DateUtils.getNewFormatDateString(new Date(System.currentTimeMillis()))));
         sleepOneSecond();
     }
 

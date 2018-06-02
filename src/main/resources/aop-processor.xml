@@ -10,13 +10,13 @@
     <!-- bean definition & AOP specific configuration -->
     <aop:config>
         <aop:aspect id="firstAspect" ref="beanProcessAspect" >
-            <aop:pointcut id="aopProcessor" expression="execution(* com.mytest.aop.MyProcessor.processor(..))"/>
+            <aop:pointcut id="aopProcessor" expression="execution(* com.mytest.bean.MyProcessor.processor(..))"/>
             <aop:around method="aroundAdvice" pointcut-ref="aopProcessor"/>
         </aop:aspect>
     </aop:config>
     <aop:aspectj-autoproxy  proxy-target-class="true"/>
     <bean id="beanProcessAspect" class="com.mytest.aop.BeanProcessAspect"/>
-    <bean id="myProcessor" class="com.mytest.aop.MyProcessor">
+    <bean id="myProcessor" class="com.mytest.bean.MyProcessor">
         <property name="message" value="TEST 1"/>
     </bean>
 
