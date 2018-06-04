@@ -14,56 +14,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mytest.bean;
-
-import org.springframework.beans.factory.InitializingBean;
+package com.mytest.aop.jdkproxy;
 
 import com.mytest.common.utils.LogUtil;
+import com.mytest.model.UserInfo;
 
 /**
  * @author liqingyu
- * @since 2018/05/25
+ * @since 2018/06/04
  */
-public class DemoInitializingBean implements InitializingBean {
-    /** message */
-    private String message;
-
-    static {
-        LogUtil.digestLog();
-    }
-
+public class UserService implements Service {
     /**
-     * init
-     */
-    public void init() {
-        LogUtil.digestLog();
-    }
-
-    /**
-     * before init be called
-     *
-     * @throws Exception
+     * @see com.mytest.aop.jdkproxy.Service#process(com.mytest.model.UserInfo)
      */
     @Override
-    public void afterPropertiesSet() {
+    public UserInfo process(UserInfo user) {
         LogUtil.digestLog();
-    }
-
-    /**
-     * Getter method for property <tt>message</tt>.
-     *
-     * @return property value of message
-     */
-    public String getMessage() {
-        return message;
-    }
-
-    /**
-     * Setter method for property <tt>message</tt>.
-     *
-     * @param message value to be assigned to property message
-     */
-    public void setMessage(String message) {
-        this.message = message;
+        return user;
     }
 }
