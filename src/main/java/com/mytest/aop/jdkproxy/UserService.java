@@ -16,7 +16,7 @@
  */
 package com.mytest.aop.jdkproxy;
 
-import com.mytest.common.utils.LogUtil;
+import com.mytest.common.utils.LogUtils;
 import com.mytest.model.UserInfo;
 
 /**
@@ -29,7 +29,7 @@ public class UserService implements Service {
      */
     @Override
     public UserInfo process(UserInfo user) {
-        LogUtil.digestLog();
+        LogUtils.digestLog();
         return user;
     }
 }

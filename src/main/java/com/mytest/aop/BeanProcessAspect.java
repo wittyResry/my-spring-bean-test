@@ -19,7 +19,7 @@ package com.mytest.aop;
 import org.aspectj.lang.ProceedingJoinPoint;
 
 import com.mytest.bean.MyProcessor;
-import com.mytest.common.utils.LogUtil;
+import com.mytest.common.utils.LogUtils;
 
 /**
  * @author liqingyu
@@ -36,8 +36,8 @@ public class BeanProcessAspect {
     public Object aroundAdvice(ProceedingJoinPoint jp) {
         Object retVal;
         try {
-            LogUtil.digestLog();
-            LogUtil.digest("log Begining method: %s.%s", jp.getTarget().getClass().getName(),
+            LogUtils.digestLog();
+            LogUtils.digest("log Begining method: %s.%s", jp.getTarget().getClass().getName(),
                 jp.getSignature().getName());
             if (jp.getTarget() instanceof MyProcessor) {
                 ((MyProcessor) jp.getTarget()).setExtMassage("TEST 2");

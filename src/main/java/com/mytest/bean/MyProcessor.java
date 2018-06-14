@@ -18,7 +18,7 @@ package com.mytest.bean;
 
 import com.mytest.aop.annotation.CheckAnnotated;
 import com.mytest.model.UserInfo;
-import com.mytest.common.utils.LogUtil;
+import com.mytest.common.utils.LogUtils;
 
 /**
  * @author liqingyu
@@ -60,7 +60,7 @@ public class MyProcessor {
      * @param message value to be assigned to property message
      */
     public void setMessage(String message) {
-        LogUtil.digestLog();
+        LogUtils.digestLog();
         this.message = message;
     }
 

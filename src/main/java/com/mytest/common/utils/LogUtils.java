@@ -24,7 +24,7 @@ import java.util.Date;
  * @author liqingyu
  * @since 2018/05/25
  */
-public class LogUtil {
+public class LogUtils {
     /** 调用栈下标 */
     public static final int INDEX = 2;
 

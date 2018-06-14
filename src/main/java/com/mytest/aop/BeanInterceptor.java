@@ -24,7 +24,7 @@ import org.springframework.aop.support.AopUtils;
 
 import com.mytest.aop.annotation.CheckAnnotated;
 import com.mytest.bean.MyProcessor;
-import com.mytest.common.utils.LogUtil;
+import com.mytest.common.utils.LogUtils;
 
 /**
  * @author liqingyu
@@ -35,8 +35,8 @@ public class BeanInterceptor implements MethodInterceptor {
     public Object invoke(MethodInvocation invocation) throws Throwable {
         Object retVal;
         try {
-            LogUtil.digestLog();
-            LogUtil.digest("log Begining method: %s.%s",
+            LogUtils.digestLog();
+            LogUtils.digest("log Begining method: %s.%s",
                 invocation.getThis().getClass().getName(),
                 invocation.getMethod().getName());
             Method method = AopUtils.getTargetClass(invocation.getThis()).getMethod(

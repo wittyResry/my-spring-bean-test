@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="staticMethod" value="com.mytest.common.utils.ValidateUtils.setStaticInjectProp"/>
+        <property name="arguments" value="beanInvokeValue"/>
+    </bean>
+
+    <bean id="sysProps" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetClass">
+            <value>java.lang.System</value>
+        </property>
+        <property name="targetMethod">
+            <value>getProperties</value>
+        </property>
+    </bean>
+
+    <bean id="javaVersion" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetObject">
+            <ref local="sysProps"/>
+        </property>
+        <property name="targetMethod">
+            <value>getProperty</value>
+        </property>
+        <property name="arguments">
+            <list>
+                <value>java.version</value>
+            </list>
+        </property>
+    </bean>
+</beans>

@@ -16,41 +16,44 @@
  */
 package com.mytest.bean;
 
+import java.util.Properties;
+
+import javax.annotation.Resource;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.mytest.common.utils.ValidateUtils;
+
 /**
  * @author liqingyu
  * @since 2018/05/29
  */
-public class BeanScopeTest {
+public class BeanInvokeTest {
+
+
+    @Resource(name = "sysProps")
+    public Properties properties;
+
     @Test
     public void test() {
         //根据XML配置文件初始化Spring上下文
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
-            "bean-scope.xml");
-        SingletonProcessor singletonProcessor1 = applicationContext.getBean("singletonProcessor1",
-            SingletonProcessor.class);
+            "bean-invoke.xml");
+        System.out.println(ValidateUtils.getStaticInjectProp());
+        Properties sysProps = applicationContext.getBean("sysProps", Properties.class);
+        Assert.assertNotNull("sysProps", sysProps);
+        String javaVersion = applicationContext.getBean("javaVersion", String.class);
+        Assert.assertNotNull("javaVersion", javaVersion);
+        Assert.assertEquals("等价实现", sysProps.getProperty("java.version"),javaVersion);
+        System.out.println(javaVersion);
 
-        singletonProcessor1.setMessage("TEST 2");
+        //======test static注入=======
+        Assert.assertEquals("注入static值", "beanInvokeValue", ValidateUtils.getStaticInjectProp());
 
-        SingletonProcessor singletonProcessor = applicationContext.getBean("singletonProcessor1",
-            SingletonProcessor.class);
-        Assert.assertEquals("", "TEST 2", singletonProcessor.getMessage());
-
-        SingletonProcessor singletonProcessor2 = applicationContext.getBean("singletonProcessor2",
-            SingletonProcessor.class);
-        Assert.assertNotSame("singleton distinguish by name", singletonProcessor1, singletonProcessor2);
-
-        PrototypeProcessor prototypeProcessor1 = applicationContext.getBean("prototypeProcessor",
-            PrototypeProcessor.class);
-        PrototypeProcessor prototypeProcessor2 = applicationContext.getBean("prototypeProcessor",
-            PrototypeProcessor.class);
-        Assert.assertNotSame("prototype", prototypeProcessor1, prototypeProcessor2);
-        Assert.assertNotSame("prototype", "TEST 4", prototypeProcessor1.getMessage());
-        Assert.assertNotSame("prototype", "TEST 4", prototypeProcessor2.getMessage());
+        //
         System.out.println("=======done=======");
     }
 }

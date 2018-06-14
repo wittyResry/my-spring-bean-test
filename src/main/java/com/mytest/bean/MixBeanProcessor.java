@@ -22,7 +22,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 
-import com.mytest.common.utils.LogUtil;
+import com.mytest.common.utils.LogUtils;
 
 /**
  * @author liqingyu
@@ -34,21 +34,21 @@ public class MixBeanProcessor implements InitializingBean, BeanFactoryPostProces
     private DemoInitializingBean demoInitializingBean;
 
     static {
-        LogUtil.digestLog();
+        LogUtils.digestLog();
     }
 
     /**
      * constructor
      */
     public MixBeanProcessor() {
-        LogUtil.digestLog();
+        LogUtils.digestLog();
     }
 
     /**
      * init-method
      */
     public void init() {
-        LogUtil.digestLog();
+        LogUtils.digestLog();
     }
 
     /**
@@ -56,7 +56,7 @@ public class MixBeanProcessor implements InitializingBean, BeanFactoryPostProces
      */
     @Override
     public void destroy() {
-        LogUtil.digestLog();
+        LogUtils.digestLog();
     }
 
     /**
@@ -70,7 +70,7 @@ public class MixBeanProcessor implements InitializingBean, BeanFactoryPostProces
      */
     @Override
     public void afterPropertiesSet() throws Exception {
-        LogUtil.digestLog();
+        LogUtils.digestLog();
     }
 
     /**
@@ -83,7 +83,7 @@ public class MixBeanProcessor implements InitializingBean, BeanFactoryPostProces
      */
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        LogUtil.digestLog();
+        LogUtils.digestLog();
     }
 
     /**
@@ -92,7 +92,7 @@ public class MixBeanProcessor implements InitializingBean, BeanFactoryPostProces
      * @param demoInitializingBean value to be assigned to property demoInitializingBean
      */
     public void setDemoInitializingBean(DemoInitializingBean demoInitializingBean) {
-        LogUtil.digestLog();
+        LogUtils.digestLog();
         this.demoInitializingBean = demoInitializingBean;
     }
 }

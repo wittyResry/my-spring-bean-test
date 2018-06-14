@@ -6,7 +6,7 @@ import java.lang.reflect.Proxy;
 import org.junit.Test;
 
 import com.mytest.aop.MyInvocationHandler;
-import com.mytest.common.utils.LogUtil;
+import com.mytest.common.utils.LogUtils;
 import com.mytest.model.UserInfo;
 
 /**
@@ -21,7 +21,7 @@ public class JDKProxyTest {
             @Override
             public void doBefore(Object proxy, Method method, Object[] args) {
                 if (args.length > 0 && args[0] instanceof UserInfo) {
-                    LogUtil.digest("log before method: %s.%s %s", proxy.getClass().getName(),
+                    LogUtils.digest("log before method: %s.%s %s", proxy.getClass().getName(),
                         method.getName(), args[0]);
                 }
             }
@@ -29,7 +29,7 @@ public class JDKProxyTest {
             @Override
             public void doAfter(Object proxy, Method method, Object[] args) {
                 if (args.length > 0 && args[0] instanceof UserInfo) {
-                    LogUtil.digest("log after method: %s.%s %s", proxy.getClass().getName(),
+                    LogUtils.digest("log after method: %s.%s %s", proxy.getClass().getName(),
                         method.getName(), args[0]);
                 }
             }
@@ -42,7 +42,7 @@ public class JDKProxyTest {
         userInfo.setEmail("liqingyu@mytest.com");
         userInfo.setMobile("13812345678");
         UserInfo user = serviceProxy.process(userInfo);
-        LogUtil.digest("脱敏后的user:" + user);
+        LogUtils.digest("脱敏后的user:" + user);
     }
 
 }

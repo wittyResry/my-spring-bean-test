@@ -45,6 +45,9 @@ public class ValidateUtils {
     private final static Pattern REGEX_INTERNATIONAL_MOBILE_PATTERN = Pattern
         .compile(REGEX_INTERNATIONAL_MOBILE);
 
+    /** 静态注入属性 */
+    public static String staticInjectProp;
+
     /**
      * 判断输入的字符串是否是合法email格式
      *
@@ -78,5 +81,23 @@ public class ValidateUtils {
             pm = REGEX_INTERNATIONAL_MOBILE_PATTERN.matcher(mobile);
         }
         return pm.matches();
+    }
+
+    /**
+     * Setter method for property <tt>staticInjectProp</tt>.
+     *
+     * @param staticInjectProp value to be assigned to property staticInjectProp
+     */
+    public static void setStaticInjectProp(String staticInjectProp) {
+        ValidateUtils.staticInjectProp = staticInjectProp;
+    }
+
+    /**
+     * Getter method for property <tt>staticInjectProp</tt>.
+     *
+     * @return property value of staticInjectProp
+     */
+    public static String getStaticInjectProp() {
+        return staticInjectProp;
     }
 }

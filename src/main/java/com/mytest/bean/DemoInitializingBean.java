@@ -18,7 +18,7 @@ package com.mytest.bean;
 
 import org.springframework.beans.factory.InitializingBean;
 
-import com.mytest.common.utils.LogUtil;
+import com.mytest.common.utils.LogUtils;
 
 /**
  * @author liqingyu
@@ -29,14 +29,14 @@ public class DemoInitializingBean implements InitializingBean {
     private String message;
 
     static {
-        LogUtil.digestLog();
+        LogUtils.digestLog();
     }
 
     /**
      * init
      */
     public void init() {
-        LogUtil.digestLog();
+        LogUtils.digestLog();
     }
 
     /**
@@ -46,7 +46,7 @@ public class DemoInitializingBean implements InitializingBean {
      */
     @Override
     public void afterPropertiesSet() {
-        LogUtil.digestLog();
+        LogUtils.digestLog();
     }
 
     /**

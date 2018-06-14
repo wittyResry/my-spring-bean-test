@@ -20,7 +20,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
 
-import com.mytest.common.utils.LogUtil;
+import com.mytest.common.utils.LogUtils;
 
 /**
  * @author liqingyu
@@ -49,7 +49,7 @@ public class DecorateBeanPostProcessor implements BeanPostProcessor {
     @Override
     public Object postProcessBeforeInitialization(Object bean,
                                                   String beanName) throws BeansException {
-        LogUtil.digestLog();
+        LogUtils.digestLog();
         System.out.println(
             "do before any bean initialization callbacks==>"
                            + beanName);
@@ -79,7 +79,7 @@ public class DecorateBeanPostProcessor implements BeanPostProcessor {
     @Override
     public Object postProcessAfterInitialization(Object bean,
                                                  String beanName) throws BeansException {
-        LogUtil.digestLog();
+        LogUtils.digestLog();
         System.out.println(
                 "do after any bean initialization callbacks==>"
                         + beanName);

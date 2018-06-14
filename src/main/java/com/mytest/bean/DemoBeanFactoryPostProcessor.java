@@ -20,7 +20,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 
-import com.mytest.common.utils.LogUtil;
+import com.mytest.common.utils.LogUtils;
 
 /**
  * @author liqingyu
@@ -29,7 +29,7 @@ import com.mytest.common.utils.LogUtil;
 public class DemoBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
 
     static {
-        LogUtil.digestLog();
+        LogUtils.digestLog();
     }
 
     /**
@@ -42,6 +42,6 @@ public class DemoBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
      */
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        LogUtil.digestLog();
+        LogUtils.digestLog();
     }
 }
