@@ -14,6 +14,11 @@ import com.mytest.model.UserInfo;
  * @since 2018/06/04
  */
 public class JDKProxyTest {
+    /**
+     * 1. 接口通过JDK动态代理类，反射实现
+     * @see org.springframework.aop.framework.JdkDynamicAopProxy#invoke
+     * 2. Class通过cglib动态代理实现
+     */
     @Test
     public void test() {
         Service service = new UserService();
